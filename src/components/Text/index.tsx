@@ -4,7 +4,7 @@ interface Props {
     children: React.ReactNode;
     size?: 'small' | 'medium' | 'large';
     bold?: boolean;
-    color?: 'dark' | 'light';
+    color?: 'dark' | 'light' | 'primary';
 }
 
 export function Text(props: Props): JSX.Element {

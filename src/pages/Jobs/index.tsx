@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Text } from "../../components/Text";
 import { formatCurrency } from '../../utils/formatCurrency';
+import { Button } from '../../components/Button';
 
 
 export function Jobs(): JSX.Element {
@@ -65,12 +66,12 @@ export function Jobs(): JSX.Element {
                     <input
                         className={styles.input}
                         type="text"
-                        placeholder="Search for a job"
+                        placeholder="Procurar por um trabalho..."
                         value={searchString}
                         onChange={(e) => setSearchString(e.target.value)}
                     />
                 </div>
-                <Text size="large">{`${filteredJobs.length} jobs found`}</Text>
+                <Text size="large">{`${filteredJobs.length} trabalhos encontrados`}</Text>
             </header>
             <div className={styles.cards}>
                 {hasJobs && filteredJobs.map((job) => JobCard(job))}
@@ -88,12 +89,13 @@ function JobCard(job: Job) {
                 <Text size="small">{formatCurrency(job.salary)}</Text>
             </div>
             <div className={styles.buttons}>
-                <button className={styles.button}>
-                    <Text size="small" color="light">Ver mais</Text>
-                </button>
-                <button className={styles.button}>
-                    <Text size="small" color="light">Candidatar-se</Text>
-                </button>
+                <Button
+                    onClick={() => console.log('Ver mais')}
+                    secondary
+                >Ver mais</Button>
+                <Button
+                    onClick={() => console.log('Candidatar-se')}
+                >Candidatar-se</Button>
             </div>
         </div>
     )
