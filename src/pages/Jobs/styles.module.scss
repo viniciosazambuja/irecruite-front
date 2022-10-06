@@ -36,16 +36,33 @@
     gap: 1rem;
 
     .inputArea{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
         width: 100%;
+        height: 3rem;
+        border-radius: 0.5rem;
+        padding: 0 1rem;
+        background-color: rgb(233, 233, 232);
+        outline: none;
+
+        .icon{
+            font-size: 1rem;
+            color: #6e6767;
+        }
 
         .input{
             width: 100%;
-            height: 3rem;
+            height: 100%;
             border: none;
-            border-radius: 0.5rem;
-            padding: 0 1rem;
-            background-color: rgb(233, 233, 232);
+            background-color: transparent;
             outline: none;
+            color: #6e6767;
+
+            &::placeholder{
+                color: #6e6767;
+            }
         }
     }
 }

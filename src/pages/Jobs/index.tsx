@@ -6,7 +6,8 @@ import axios from 'axios'
 import { Text } from "../../components/Text";
 import { formatCurrency } from '../../utils/formatCurrency';
 import { Button } from '../../components/Button';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export function Jobs(): JSX.Element {
 
@@ -73,6 +74,7 @@ export function Jobs(): JSX.Element {
         <Main id="jobs-page" className={styles.main}>
             <header className={styles.header}>
                 <div className={styles.inputArea}>
+                    <FontAwesomeIcon icon={faSearch} className={styles.icon} />
                     <input
                         className={styles.input}
                         type="text"
