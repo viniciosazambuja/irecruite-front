@@ -89,7 +89,10 @@ function JobCard(job: Job) {
             </div>
             <div className={styles.buttons}>
                 <button className={styles.button}>
-                    <Text size="small" color="light">Apply</Text>
+                    <Text size="small" color="light">Ver mais</Text>
+                </button>
+                <button className={styles.button}>
+                    <Text size="small" color="light">Candidatar-se</Text>
                 </button>
             </div>
         </div>
