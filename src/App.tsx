@@ -1,8 +1,8 @@
-import { AppRoutes } from "./routes/index.route";
+import { Jobs } from "./pages/Jobs";
 
 function App() {
   return (
-    <AppRoutes />
+    <Jobs />
   )
 }
 
