@@ -20,11 +20,21 @@ export function Jobs(): JSX.Element {
             const jobsData: Job[] = response.data?.map((job: any) => {
 
                 return {
-                    id: job.id,
+                    id: job._id,
                     title: job.title,
                     description: job.description,
                     salary: job.salary,
-                    company: job.company.name,
+                    company: {
+                        id: job.company._id,
+                        name: job.company.name,
+                        city: job.company.city,
+                        state: job.company.state,
+                        cnpj: job.company.cnpj,
+                        email: job.company.email,
+                        linkedin: job.company.linkedin,
+                        phone: job.company.phone,
+                        tradeName: job.company.tradeName,                        
+                    },
                     applicants: job.applicants?.map((applicant: any) => {
 
                         return {
@@ -51,7 +61,7 @@ export function Jobs(): JSX.Element {
 
         if(job.description.toLowerCase().includes(term)) return true
 
-        if(job.company.toLowerCase().includes(term)) return true
+        if(job.company.name.toLowerCase().includes(term)) return true
 
         return false
 

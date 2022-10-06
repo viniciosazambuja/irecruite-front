@@ -1,13 +1,15 @@
+import { company } from "./company.interface";
+
 interface applicant {
     id: number;
     step: number;
 }
 
 export interface Job {
-    id: number;
+    id: string;
     title: string;
     description: string;
     salary: number;
-    company: string;
+    company: company;
     applicants: applicant[];
 }
