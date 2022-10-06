@@ -4,6 +4,7 @@ import { Job } from "../../interfaces/job.interfaces";
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Text } from "../../components/Text";
+import { formatCurrency } from '../../utils/formatCurrency';
 
 
 export function Jobs(): JSX.Element {
@@ -81,10 +82,16 @@ export function Jobs(): JSX.Element {
 function JobCard(job: Job) {
     return (
         <div className={styles.job}>
-            <Text size="large" bold>{job.title}</Text>
-            <Text size="medium">{job.company}</Text>
-            <Text size="small">{job.description}</Text>
-            <Text size="small">{job.salary}</Text>
+            <div className={styles.infos}>
+                <Text size="large" bold>{job.title}</Text>
+                <Text size="small">{job.description}</Text>
+                <Text size="small">{formatCurrency(job.salary)}</Text>
+            </div>
+            <div className={styles.buttons}>
+                <button className={styles.button}>
+                    <Text size="small" color="light">Apply</Text>
+                </button>
+            </div>
         </div>
     )
 }

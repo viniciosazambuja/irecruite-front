@@ -4,6 +4,7 @@ interface Props {
     children: React.ReactNode;
     size?: 'small' | 'medium' | 'large';
     bold?: boolean;
+    color?: 'dark' | 'light';
 }
 
 export function Text(props: Props): JSX.Element {
@@ -13,6 +14,7 @@ export function Text(props: Props): JSX.Element {
                 ${styles.text}
                 ${styles[props.size || 'small']}
                 ${props.bold ? styles.bold : ''}
+                ${props.color ? styles[props.color] : styles.black}
             `}
         >
             {props.children}

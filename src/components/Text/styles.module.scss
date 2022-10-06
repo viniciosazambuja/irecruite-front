@@ -1,5 +1,4 @@
 .text{
-    color: #383434;
     font-size: .8rem;
     font-weight: 500;
 
@@ -14,5 +13,11 @@
     }
     &.bold{
         font-weight: 600;
+    }
+    &.dark{
+        color: #383434;
+    }
+    &.light{
+        color: #fff;
     }
 }
