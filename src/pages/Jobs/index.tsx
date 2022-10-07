@@ -8,6 +8,7 @@ import { formatCurrency } from '../../utils/formatCurrency';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Main } from '../../components/Main';
+import { Whitespace } from '../../components/Whitespace';
 
 export function Jobs(): JSX.Element {
 
@@ -110,7 +111,13 @@ export function Jobs(): JSX.Element {
             <article className={styles.fullJob}>
                 {filteredJobs.find((job) => job.id === idSelectedJob)
                 ?
-                    <Text size="large" bold>{filteredJobs.find((job) => job.id === idSelectedJob)?.title}</Text>
+                    <>
+                        <Text size="large" bold>{filteredJobs.find((job) => job.id === idSelectedJob)?.title}</Text>
+                        <Whitespace width='100%' height='.5rem' />
+                        <Text size="small">{`${filteredJobs.find((job) => job.id === idSelectedJob)?.company.name} - ${formatCurrency(filteredJobs.find((job) => job.id === idSelectedJob)?.salary || 0)}`}</Text>
+                        <Whitespace width='100%' height='1rem' />
+                        <Text size="medium" formated>{filteredJobs.find((job) => job.id === idSelectedJob)?.description}</Text>
+                    </>
                 :
                     <Text>Selecione um trabalho para ver mais detalhes....</Text>
                 }
@@ -127,7 +134,7 @@ function JobCard(job: (Job & { selected?: boolean, onClick: () => void })): JSX.
         `}>
             <div className={styles.infos}>
                 <Text size="large" bold>{job.title}</Text>
-                <Text size="small">{job.description}</Text>
+                <Text size="small">{job.company.name}</Text>
                 <Text size="small">{formatCurrency(job.salary)}</Text>
             </div>
         </div>
