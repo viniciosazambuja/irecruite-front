@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
 
 export interface Props{
-    id: string;
+    id?: string;
     children: React.ReactNode;
 }
 
