@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Main } from '../../components/Main';
 import { Whitespace } from '../../components/Whitespace';
+import { Header } from '../../components/Header';
 
 export function Jobs(): JSX.Element {
 
@@ -80,49 +81,52 @@ export function Jobs(): JSX.Element {
     }, [searchString, jobs])
     
     return (
-        <Main>
-            <Container id="jobs-page">
-                <header className={styles.header}>
-                    <div className={styles.inputArea}>
-                        <FontAwesomeIcon icon={faSearch} className={styles.icon} />
-                        <input
-                            className={styles.input}
-                            type="text"
-                            placeholder="Procurar por um trabalho..."
-                            value={searchString}
-                            onChange={(e) => setSearchString(e.target.value)}
-                        />
-                    </div>
-                    <Text size="large">{`${filteredJobs.length} trabalhos encontrados`}</Text>
-                </header>
-                <div className={styles.cards}>
-                    {hasJobs && filteredJobs.map((job) => {
-                        return (
-                            <JobCard
-                                key={job.id}
-                                selected={Boolean(idSelectedJob && idSelectedJob === job.id)}
-                                onClick={() => setIdSelectedJob(job.id)}
-                                {...job}
+        <>
+            <Header />
+            <Main>
+                <Container id="jobs-page">
+                    <header className={styles.header}>
+                        <div className={styles.inputArea}>
+                            <FontAwesomeIcon icon={faSearch} className={styles.icon} />
+                            <input
+                                className={styles.input}
+                                type="text"
+                                placeholder="Procurar por um trabalho..."
+                                value={searchString}
+                                onChange={(e) => setSearchString(e.target.value)}
                             />
-                        )
-                    })}
-                </div>
-            </Container>
-            <article className={styles.fullJob}>
-                {filteredJobs.find((job) => job.id === idSelectedJob)
-                ?
-                    <>
-                        <Text size="large" bold>{filteredJobs.find((job) => job.id === idSelectedJob)?.title}</Text>
-                        <Whitespace width='100%' height='.5rem' />
-                        <Text size="small">{`${filteredJobs.find((job) => job.id === idSelectedJob)?.company.name} - ${formatCurrency(filteredJobs.find((job) => job.id === idSelectedJob)?.salary || 0)}`}</Text>
-                        <Whitespace width='100%' height='1rem' />
-                        <Text size="medium" formated>{filteredJobs.find((job) => job.id === idSelectedJob)?.description}</Text>
-                    </>
-                :
-                    <Text>Selecione um trabalho para ver mais detalhes....</Text>
-                }
-            </article>
-        </Main>
+                        </div>
+                        <Text size="large">{`${filteredJobs.length} trabalhos encontrados`}</Text>
+                    </header>
+                    <div className={styles.cards}>
+                        {hasJobs && filteredJobs.map((job) => {
+                            return (
+                                <JobCard
+                                    key={job.id}
+                                    selected={Boolean(idSelectedJob && idSelectedJob === job.id)}
+                                    onClick={() => setIdSelectedJob(job.id)}
+                                    {...job}
+                                />
+                            )
+                        })}
+                    </div>
+                </Container>
+                <article className={styles.fullJob}>
+                    {filteredJobs.find((job) => job.id === idSelectedJob)
+                    ?
+                        <>
+                            <Text size="large" bold>{filteredJobs.find((job) => job.id === idSelectedJob)?.title}</Text>
+                            <Whitespace width='100%' height='.5rem' />
+                            <Text size="small">{`${filteredJobs.find((job) => job.id === idSelectedJob)?.company.name} - ${formatCurrency(filteredJobs.find((job) => job.id === idSelectedJob)?.salary || 0)}`}</Text>
+                            <Whitespace width='100%' height='1rem' />
+                            <Text size="medium" formated>{filteredJobs.find((job) => job.id === idSelectedJob)?.description}</Text>
+                        </>
+                    :
+                        <Text>Selecione um trabalho para ver mais detalhes....</Text>
+                    }
+                </article>
+            </Main>
+        </>
     )
 }
 
