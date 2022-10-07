@@ -1,0 +1,17 @@
+.buttonArea{
+    width: 2.5rem;
+    height: 2.5rem;
+    box-shadow: 50%;
+    background-color: #56abe4;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all .3s ease-in-out;
+    border-radius: 50%;
+
+    &:hover{
+        filter: brightness(.9);
+    }
+}
