@@ -23,8 +23,6 @@
     &.primary{
         color: #56abe4;
     }
-    // Tag pre is used to display text in a fixed-width font, and it preserves both spaces and line breaks.
-    // Break lines in the text per line
     &.formated{
         white-space: pre-line;
     }
