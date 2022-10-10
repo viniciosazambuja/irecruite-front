@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Input } from '../../components/Input';
 import axios from 'axios';
 import { Form } from '../../components/Form';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginInfo {
     email: string;
@@ -31,6 +32,8 @@ export function Login(): JSX.Element {
 
 function CardLogin(): JSX.Element {
 
+    const navigate = useNavigate();
+
     const [data, setData] = useState<LoginInfo>({
         email: '',
         password: '',
@@ -48,7 +51,7 @@ function CardLogin(): JSX.Element {
 
         const response = await axios.post(`http://localhost:3030/login`);
 
-        console.log(response);  
+        if(response.status === 200) navigate('/jobs');
     };
 
     return (
