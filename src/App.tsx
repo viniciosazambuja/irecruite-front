@@ -1,8 +1,8 @@
-import { Register } from "./pages/Register";
+import { AppRoutes } from "./routes/index.route";
 
 function App() {
   return (
-    <Register />
+    <AppRoutes />
   )
 }
 

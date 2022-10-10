@@ -1,16 +1,16 @@
 # Documentação
 -> FRONTEND<-
-/signup
- /user
- /company
-/login
+/signup OK
+ /user OK
+ /company OK
+/login OK
 /profile
  /:username
   /edit
   /my-jobs
    /:id
-/jobs
- :id
+/jobs OK
+ :id OK
 /company
  /:id
   /edit
