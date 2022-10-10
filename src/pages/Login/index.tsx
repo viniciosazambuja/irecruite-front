@@ -1,5 +1,3 @@
-import styles from './styles.module.scss';
-
 import { Container } from "../../components/Container";
 import { FlexArea } from "../../components/FlexArea";
 import { Card } from "../../components/Card";
@@ -8,6 +6,7 @@ import { Button } from '../../components/Button';
 import { useState } from 'react';
 import { Input } from '../../components/Input';
 import axios from 'axios';
+import { Form } from '../../components/Form';
 
 interface LoginInfo {
     email: string;
@@ -54,10 +53,7 @@ function CardLogin(): JSX.Element {
 
     return (
         <Card>
-            <form
-                onSubmit={handleSubmit}
-                className={styles.form}
-            >
+            <Form onSubmit={handleSubmit}>
                 <Text size='large' color='dark' bold>Login</Text>
                 <Input
                     type='email'
@@ -76,7 +72,7 @@ function CardLogin(): JSX.Element {
                     onChange={handleChange}
                 />
                 <Button type='submit'>Entrar agora</Button>
-            </form>
+            </Form>
         </Card>
     )
 }
