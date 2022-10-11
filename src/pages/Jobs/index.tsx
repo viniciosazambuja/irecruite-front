@@ -74,9 +74,7 @@ export function Jobs(): JSX.Element {
     const hasJobs = filteredJobs.length > 0;
 
     useEffect(() => {
-        if(!hasJobs) {
-            setIdSelectedJob(null);
-        }
+        if(!hasJobs) setIdSelectedJob(null);
         setIdSelectedJob(filteredJobs[0]?.id);
     }, [searchString, jobs])
     
