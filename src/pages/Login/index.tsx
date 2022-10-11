@@ -49,9 +49,14 @@ function CardLogin(): JSX.Element {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const response = await axios.post(`http://localhost:3030/login`);
+        try{
+            const response = await axios.post(`http://localhost:3030/login`, data);
 
-        if(response.status === 200) navigate('/jobs');
+            localStorage.setItem('token', response.data.token);
+            navigate('/jobs');
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
