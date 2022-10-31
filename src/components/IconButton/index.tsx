@@ -8,7 +8,7 @@ interface Props {
 
 export function IconButton(props: Props): JSX.Element {
     return (
-        <div className={styles.buttonArea}>
+        <div className={styles.buttonArea} onClick={props.onClick}>
             <FontAwesomeIcon icon={props.icon} className={styles.icon} />
         </div>
     )

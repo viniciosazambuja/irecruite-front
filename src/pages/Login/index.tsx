@@ -50,7 +50,7 @@ function CardLogin(): JSX.Element {
         event.preventDefault();
 
         try{
-            const response = await axios.post(`http://localhost:3030/login`, data);
+            const response = await axios.post(`http://localhost:3030/users/login`, data);
 
             localStorage.setItem('token', response.data.token);
             navigate('/jobs');

@@ -6,6 +6,11 @@ import { Text } from '../Text';
 import styles from './styles.module.scss';
 
 export function Header(): JSX.Element {
+    const handleSignOut = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    };
+
     return (
         <header className={styles.header}>
             <Text size='large' color='light'>iRecruite</Text>
@@ -16,7 +21,7 @@ export function Header(): JSX.Element {
                 gap='.5rem'
             >
                 <IconButton icon={faUser} onClick={() => console.log('Profile')} />
-                <IconButton icon={faSignOut} onClick={() => console.log('Logout')} />
+                <IconButton icon={faSignOut} onClick={handleSignOut} />
             </FlexArea>
         </header>
     )
