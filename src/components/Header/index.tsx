@@ -18,7 +18,12 @@ export function Header(): JSX.Element {
 
     return (
         <header className={styles.header}>
-            <Text size='large' color='light'>iRecruite</Text>
+            <div
+                onClick={() => navigate('/')}
+                style={{ cursor: 'pointer' }}
+            >
+                <Text size='large' color='light'>iRecruite</Text>
+            </div>
             <FlexArea
                 direction='row'
                 justifyContent='flex-end'
