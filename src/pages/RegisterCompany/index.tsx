@@ -9,14 +9,14 @@ import { Input } from "../../components/Input"
 import { Text } from '../../components/Text';
 
 interface RegisterInfo {
-    firstName: string
-    lastName: string
+    name: string
     email: string
+    cnpj: string
     password: string
     confirmPassword: string
 }
 
-export function Register(): JSX.Element {
+export function RegisterCompany(): JSX.Element {
     return (
         <Container>
             <FlexArea
@@ -35,9 +35,9 @@ export function Register(): JSX.Element {
 function CardRegister(): JSX.Element {
 
     const [registerData, setRegisterData] = useState<RegisterInfo>({
-        firstName: '',
-        lastName: '',
+        name: '',
         email: '',
+        cnpj: '',
         password: '',
         confirmPassword: ''
     });
@@ -51,12 +51,13 @@ function CardRegister(): JSX.Element {
         event.preventDefault();
 
         const userData = {
-            name: `${registerData.firstName} ${registerData.lastName}`,	
+            name: registerData.name,
+            cnpj: registerData.cnpj,	
             email: registerData.email,
             password: registerData.password
         }
 
-        await axios.post('/users', userData);
+        await axios.post('/companies', userData);
 
         window.location.href = '/login';
     }
@@ -66,19 +67,11 @@ function CardRegister(): JSX.Element {
             <Form onSubmit={handleSubmit}>
                 <Text size='large' color='dark' bold>Register</Text>
                 <Input
-                    name='firstName'
+                    name='name'
                     type='text'
-                    label='First Name'
-                    placeholder='First Name'
-                    value={registerData.firstName}
-                    onChange={handleInputChange}
-                />
-                <Input
-                    name='lastName'
-                    type='text'
-                    label='Last Name'
-                    placeholder='Last Name'
-                    value={registerData.lastName}
+                    label='Company Name'
+                    placeholder='Company name'
+                    value={registerData.name}
                     onChange={handleInputChange}
                 />
                 <Input
@@ -87,6 +80,14 @@ function CardRegister(): JSX.Element {
                     label='Email'
                     placeholder='Email'
                     value={registerData.email}
+                    onChange={handleInputChange}
+                />
+                <Input
+                    name='cnpj'
+                    type='text'
+                    label='CNPJ'
+                    placeholder='CNPJ'
+                    value={registerData.cnpj}
                     onChange={handleInputChange}
                 />
                 <Input

@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .label{
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .textarea{
+        border: 1px solid #E5E5E5;
+        border-radius: 5px;
+        height: 7rem;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #383434;
+        resize: none;
+
+        &:focus{
+            outline: none;
+            border: 1px solid #383434;
+        }
+    }
+}
