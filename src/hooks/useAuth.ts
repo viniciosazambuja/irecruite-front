@@ -10,11 +10,8 @@ interface LoggedUser {
 
 interface Auth {
     isLogged: boolean;
-<<<<<<< HEAD
     user: LoggedUser | null;
-=======
     signOut: () => void;
->>>>>>> 3cbb03859da3179b407c75bc213e3b880f2d9b7d
 }
 
 export function useAuth(): Auth {
@@ -47,11 +44,8 @@ export function useAuth(): Auth {
 
     const auth: Auth = {
         isLogged: isLogged,
-<<<<<<< HEAD
-        user: user
-=======
+        user: user,
         signOut: signOut,
->>>>>>> 3cbb03859da3179b407c75bc213e3b880f2d9b7d
     }
 
     return auth
