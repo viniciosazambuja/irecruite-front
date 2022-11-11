@@ -10,12 +10,18 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Main } from '../../components/Main';
 import { Whitespace } from '../../components/Whitespace';
 import { Header } from '../../components/Header';
+import { Button } from '../../components/Button';
+import { SelectedButton } from '../../components/SelectedButton';
+import { useAuth } from '../../hooks/useAuth';
 
 export function Jobs(): JSX.Element {
 
     const [jobs, setJobs] = useState<Job[]>([]);
     const [searchString, setSearchString] = useState<string>('');
     const [idSelectedJob, setIdSelectedJob] = useState<string | null>(null);
+    const [showOnlyFromMyCompany, setShowOnlyFromMyCompany] = useState<boolean>(false);
+    const [showOnlyFromSubsribed, setShowOnlyFromSubsribed] = useState<boolean>(false);
+    const { user } = useAuth();
 
     useEffect(() => {
         async function getData() {
@@ -78,21 +84,39 @@ export function Jobs(): JSX.Element {
         setIdSelectedJob(filteredJobs[0]?.id);
     }, [searchString, jobs])
     
+    
     return (
         <>
             <Header />
             <Main>
                 <Container id="jobs-page">
                     <header className={styles.header}>
-                        <div className={styles.inputArea}>
-                            <FontAwesomeIcon icon={faSearch} className={styles.icon} />
-                            <input
-                                className={styles.input}
-                                type="text"
-                                placeholder="Procurar por um trabalho..."
-                                value={searchString}
-                                onChange={(e) => setSearchString(e.target.value)}
-                            />
+                        <div className={styles.controllerArea}>
+                            <div className={styles.inputArea}>
+                                <FontAwesomeIcon icon={faSearch} className={styles.icon} />
+                                <input
+                                    className={styles.input}
+                                    type="text"
+                                    placeholder="Procurar por um trabalho..."
+                                    value={searchString}
+                                    onChange={(e) => setSearchString(e.target.value)}
+                                />
+                            </div>
+                            {user?.type === 'company' ?
+                                <SelectedButton
+                                    selected={showOnlyFromMyCompany}
+                                    onClick={() => setShowOnlyFromMyCompany(!showOnlyFromMyCompany)}
+                                >
+                                    {showOnlyFromMyCompany ? 'Mostrar todos' : 'Mostrar apenas da minha empresa'}
+                                </SelectedButton>  
+                            :
+                                <SelectedButton
+                                    selected={showOnlyFromSubsribed}
+                                    onClick={() => setShowOnlyFromSubsribed(!showOnlyFromSubsribed)}
+                                >
+                                    {showOnlyFromSubsribed ? 'Mostrar todos' : 'Mostrar apenas que estou inscrito'}
+                                </SelectedButton>
+                            }
                         </div>
                         <Text size="large">{`${filteredJobs.length} trabalhos encontrados`}</Text>
                     </header>

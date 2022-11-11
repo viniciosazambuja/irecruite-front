@@ -1,0 +1,21 @@
+// A selected button
+
+.button{
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    min-height: 2.5rem;
+    border: 2px solid #56abe4;
+    background-color: #fff;
+    color: #56abe4;
+
+    &:hover{
+        filter: brightness(.8);
+    }
+
+    &.selected{
+        background-color: #56abe4;
+        color: #fff;
+    }
+}
