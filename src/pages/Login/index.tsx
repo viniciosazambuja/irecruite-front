@@ -8,6 +8,7 @@ import { Input } from '../../components/Input';
 import axios from 'axios';
 import { Form } from '../../components/Form';
 import { useNavigate } from 'react-router-dom';
+import { User } from "../../interfaces/user.interfaces";
 
 interface LoginInfo {
     email: string;
@@ -53,6 +54,11 @@ function CardLogin(): JSX.Element {
             const response = await axios.post(`http://localhost:3030/users/login`, data);
 
             localStorage.setItem('token', response.data.token);
+            if (response.data.user) {
+                localStorage.setItem('user', JSON.stringify(response.data.user));
+            } else if (response.data.company) {
+                localStorage.setItem('company', JSON.stringify(response.data.company));
+            }
             navigate('/jobs');
         } catch (error) {
             console.error(error);
