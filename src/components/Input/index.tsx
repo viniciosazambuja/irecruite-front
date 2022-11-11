@@ -8,9 +8,22 @@ interface Props{
     placeholder: string;
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    monetary?: boolean;
 }
 
 export function Input(props: Props): JSX.Element{
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if(!props.monetary){
+            props.onChange(event);
+        } else {
+            const regex = /^[0-9\b]+$/;
+            if (event.target.value === '' || regex.test(event.target.value)) {
+                props.onChange(event);
+            }
+        }
+    };
+
     return (
         <div className={styles.container}>
             <label
@@ -25,7 +38,7 @@ export function Input(props: Props): JSX.Element{
                 name={props.name}
                 placeholder={props.placeholder}
                 value={props.value}
-                onChange={props.onChange}
+                onChange={handleChange}
             />
         </div>
     )

@@ -10,10 +10,14 @@ interface LoggedUser {
 
 interface Auth {
     isLogged: boolean;
+<<<<<<< HEAD
     user: LoggedUser | null;
+=======
+    signOut: () => void;
+>>>>>>> 3cbb03859da3179b407c75bc213e3b880f2d9b7d
 }
 
-export function useAuth() {
+export function useAuth(): Auth {
     const isLogged: boolean = Boolean(localStorage.getItem('token'));
     const [user, setUser] = useState<LoggedUser | null>(null);
 
@@ -36,9 +40,18 @@ export function useAuth() {
     }, [isLogged]);
 
 
+    const signOut = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    };
+
     const auth: Auth = {
         isLogged: isLogged,
+<<<<<<< HEAD
         user: user
+=======
+        signOut: signOut,
+>>>>>>> 3cbb03859da3179b407c75bc213e3b880f2d9b7d
     }
 
     return auth
