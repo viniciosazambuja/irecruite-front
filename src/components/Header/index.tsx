@@ -10,7 +10,7 @@ export function Header(): JSX.Element {
 
     const navigate = useNavigate();
 
-    const { signOut }  = useAuth();
+    const { signOut, user } = useAuth();
 
     const handleCreateJob = () => {
         navigate('/jobs/create');
@@ -30,8 +30,10 @@ export function Header(): JSX.Element {
                 alignItems='center'
                 gap='.5rem'
             >
+                {user?.type === 'company' ?
+                    <IconButton icon={faPlus} onClick={handleCreateJob} />
+                : null}
                 <IconButton icon={faUser} onClick={() => console.log('Profile')} />
-                <IconButton icon={faPlus} onClick={handleCreateJob} />
                 <IconButton icon={faSignOut} onClick={signOut} />
             </FlexArea>
         </header>

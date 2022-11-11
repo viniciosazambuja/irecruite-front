@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { CompanyProtected } from "../components/CompanyProtected"
 import { Protected } from "../components/Protected"
 import { Jobs } from "../pages/Jobs"
 import { Login } from "../pages/Login"
@@ -18,7 +19,9 @@ export function AppRoutes(): JSX.Element {
                     <Route index element={<Navigate to="/jobs" />} />
                     <Route path="jobs">
                         <Route index element={<Jobs />} />
-                        <Route path="create" element={<NewJob />} />
+                        <Route path="create" element={<CompanyProtected />}>
+                            <Route index element={<NewJob />} />
+                        </Route>
                     </Route>
                     <Route path="*" element={<NotFound />} />
                 </Route>

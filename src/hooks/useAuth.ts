@@ -39,6 +39,8 @@ export function useAuth(): Auth {
 
     const signOut = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('company');
         window.location.reload();
     };
 
