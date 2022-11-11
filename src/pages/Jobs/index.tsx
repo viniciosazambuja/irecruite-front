@@ -21,8 +21,6 @@ export function Jobs(): JSX.Element {
         async function getData() {
             const response = await axios.get('http://localhost:3030/jobs');
 
-            console.log(response.data);
-
             const jobsData: Job[] = response.data?.jobs.map((job: any) => {
 
                 return {
@@ -51,7 +49,6 @@ export function Jobs(): JSX.Element {
                 }
             })
 
-            console.log('jobsData', jobsData);
             setJobs(jobsData);
         }
 
@@ -60,9 +57,9 @@ export function Jobs(): JSX.Element {
 
     const filteredJobs = jobs.filter((job) => {
 
-        const term = searchString.toLowerCase();
-
         if(!searchString) return true
+
+        const term = searchString.toLowerCase();
 
         if(job.title.toLowerCase().includes(term)) return true
 
