@@ -7,6 +7,7 @@ import { NewJob } from "../pages/NewJob"
 import { NotFound } from "../pages/NotFound"
 import { Register } from "../pages/Register"
 import { RegisterCompany } from "../pages/RegisterCompany"
+import { Dashboard } from "../pages/Dashboard"
 
 export function AppRoutes(): JSX.Element {
     return (
@@ -14,6 +15,7 @@ export function AppRoutes(): JSX.Element {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/companies/register" element={<RegisterCompany />} />
                 <Route path='/' element={<Protected />}>
                     <Route index element={<Navigate to="/jobs" />} />
@@ -22,7 +24,11 @@ export function AppRoutes(): JSX.Element {
                         <Route path="create" element={<CompanyProtected />}>
                             <Route index element={<NewJob />} />
                         </Route>
+                        <Route path="dashboard" element={<CompanyProtected />}>
+                            <Route index element={<Dashboard />} />
+                        </Route>
                     </Route>
+                
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
