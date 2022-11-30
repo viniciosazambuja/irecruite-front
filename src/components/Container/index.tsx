@@ -10,7 +10,7 @@ export function Container(props: Props): JSX.Element {
     return (
         <article
             id={props.id}
-            className={styles.main}
+            className={`${styles.container} ${props.scrollable ? styles.scrollable : ''}`}
         >
             {props.children}
         </article>
