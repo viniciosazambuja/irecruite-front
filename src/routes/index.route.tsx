@@ -19,9 +19,7 @@ export function AppRoutes(): JSX.Element {
                     <Route index element={<Navigate to="/jobs" />} />
                     <Route path="jobs">
                         <Route index element={<Jobs />} />
-                        <Route path="create" element={<CompanyProtected />}>
-                            <Route index element={<NewJob />} />
-                        </Route>
+                        <Route path="create" element={<NewJob />} />
                     </Route>
                     <Route path="*" element={<NotFound />} />
                 </Route>

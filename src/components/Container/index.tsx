@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 export interface Props{
     id?: string;
     children: React.ReactNode;
+    scrollable?: boolean;
 }
 
 export function Container(props: Props): JSX.Element {

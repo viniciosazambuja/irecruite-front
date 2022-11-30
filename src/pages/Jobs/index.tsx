@@ -63,18 +63,34 @@ export function Jobs(): JSX.Element {
 
     const filteredJobs = jobs.filter((job) => {
 
-        if(!searchString) return true
+        let mathesSearchString = true;
 
-        const term = searchString.toLowerCase();
+        if (searchString) {
+            
+            if (!job.title.toLowerCase().includes(searchString.toLowerCase())) {
+                mathesSearchString = false;
+            }
 
-        if(job.title.toLowerCase().includes(term)) return true
+            if (!job.description.toLowerCase().includes(searchString.toLowerCase())) {
+                mathesSearchString = false;
+            }
 
-        if(job.description.toLowerCase().includes(term)) return true
+            if (!job.company.name.toLowerCase().includes(searchString.toLowerCase())) {
+                mathesSearchString = false;
+            }
+        }
 
-        if(job.company.name.toLowerCase().includes(term)) return true
+        let mathesShowOnlyFromMyCompany = true;
 
-        return false
+        if (showOnlyFromMyCompany) {
+            if (job.company.id !== user?.idUser) {
+                mathesShowOnlyFromMyCompany = false;
+            }
+        }
 
+        if (mathesSearchString && mathesShowOnlyFromMyCompany) {
+            return true;
+        }
     });
 
     const hasJobs = filteredJobs.length > 0;

@@ -55,9 +55,15 @@ function CardLogin(): JSX.Element {
 
             localStorage.setItem('token', response.data.token);
             if (response.data.user) {
-                localStorage.setItem('user', JSON.stringify(response.data.user));
+                localStorage.setItem('user', JSON.stringify({
+                    ...response.data.user,
+                    type: 'user',
+                }));
             } else if (response.data.company) {
-                localStorage.setItem('company', JSON.stringify(response.data.company));
+                localStorage.setItem('company', JSON.stringify({
+                    ...response.data.company,
+                    type: 'company',
+                }));
             }
             navigate('/jobs');
         } catch (error) {

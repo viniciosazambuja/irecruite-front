@@ -1,8 +1,7 @@
-import { User } from "../interfaces/user.interfaces";
 import { useState, useEffect } from 'react'
 
 interface LoggedUser {
-    idUser: number;
+    idUser: string;
     name: string;
     email: string;
     type: 'company' | 'user';
@@ -34,6 +33,7 @@ export function useAuth(): Auth {
                 });
             }
         }
+        console.log('user', user);
     }, [isLogged]);
 
 
