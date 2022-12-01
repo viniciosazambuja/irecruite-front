@@ -2,7 +2,7 @@
     width: 100%;
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     
     .divValores{
         background-color: #FFFFFF;
@@ -48,7 +48,7 @@
 
     .barChart{
         background-color:#FFFFFF;
-        width: 75%;
+        width: 50%;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -56,7 +56,7 @@
         align-items: center;
         border-radius: 10px;
         padding: 1rem;
-        color: white;
+        color: black;
         font-size: 1.5rem;
         font-weight: 700;
         text-align: center;
@@ -73,12 +73,29 @@
         align-items: center;
         border-radius: 10px;
         padding: 1rem;
-        color: white;
+        color: black;
         font-size: 1.5rem;
         font-weight: 700;
         text-align: center;
         border: #1E90FF 1px solid;
     }
-    
+
+    .doughnutChart{
+        background-color:#FFFFFF;
+        width: 25%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        padding: 1rem;
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        border: #1E90FF 1px solid;
+    }
+
 }
 

@@ -15,33 +15,25 @@ import {
   PointElement,
   LineElement,
   Filler,
-  ArcElement,
+  ArcElement
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { Radar } from 'react-chartjs-2';
 import { Doughnut } from 'react-chartjs-2';
 
 export const dataDoughnut = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: ['Feminino', 'Masculino'],
   datasets: [
     {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: '# gênero',
+      data: [12, 19],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132)',
+        'rgba(54, 162, 235)'
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
+        'rgba(54, 162, 235, 1)'
       ],
       borderWidth: 1,
     },
@@ -53,7 +45,7 @@ export const dataRadar = {
   datasets: [
     {
       label: '# vagas abertas',
-      data: [2, 9, 3, 5, 2, 3],
+      data: [12, 19, 13, 15, 12, 13],
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgba(255, 99, 132, 1)',
       borderWidth: 1,
@@ -75,33 +67,66 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: false,
+export const optionsRadar = {
   plugins: {
-    legend: {
-      position: 'top' as const,
-    },
     title: {
       display: true,
-      text: 'Chart.js Bar Chart',
+      text: 'Vagas por função',
+    },
+  },
+  scales: {
+    r: {
+        angleLines: {
+            display: false
+        },
+        suggestedMin: 0,
+        suggestedMax: 20
+    }
+  }
+}
+
+export const optionsDoughnut = {
+  plugins: {
+    title: {
+      display: true,
+      text: 'Candidatos por gênero',
+    },
+  },
+}
+
+
+export const options = {
+  plugins: {
+    title: {
+      display: true,
+      text: 'Vagas criadas x Fechadas por posição',
+    },
+  },
+  responsive: true,
+  scales: {
+    x: {
+      stacked: true,
+    },
+    y: {
+      stacked: true,
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
 export const data = {
   labels,
   datasets: [
     {
-      label: 'Dataset 1',
-      data: labels.map(() => [1, 2, 3, 4, 5, 6, 7]),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      label: 'Fechadas',
+      data: labels.map( () => Math.random() * 100),
+      backgroundColor: 'rgb(75, 192, 192)',
     },
     {
-      label: 'Dataset 2',
-      data: labels.map(() => [1, 2, 3, 4, 5, 6, 7]),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      label: 'Abertas',
+      data: labels.map( () => Math.random() * 100),
+      backgroundColor: 'rgb(255, 99, 132)',
     },
   ],
 };
@@ -117,32 +142,38 @@ export function Dashboard(): JSX.Element {
 
                             <div className={styles.firstDiv}>
                                 <div className={styles.divValores}>
-                                    <h4>Primeiro</h4>
-                                    <h3>Primeiro</h3>
+                                  <div>
+                                      <h2>459</h2>
+                                      <h6>Vagas criadas</h6>
+
+                                  </div>                               
                                 </div>
 
                                 <div className={styles.divValores}>
-                                    <h4>Segundo</h4>
-                                    <h3>Segundo</h3>
+                                    <h2>120</h2>
+                                    <h6>Vagas em aberto</h6>
                                 </div>
 
                                 <div className={styles.divValores}>
-                                    <h4>Terceiro</h4>
-                                    <h3>Terceiro</h3>
+                                    <h2>87%</h2>
+                                    <h6>Eficácia</h6>
                                 </div>
 
                                 <div className={styles.divValores}>
-                                    <h4>Quarto</h4>
-                                    <h3>Quarto</h3>    
+                                    <h2>58 dias</h2>    
+                                    <h6>Tempo médio</h6>
                                 </div>
                             </div>
 
                             <div id="chart" className={styles.secondDiv}>
                                 <div className={styles.barChart}>
-                                    {/* <Bar options={options} data={data} /> */}
+                                    <Bar options={options} data={data} />
                                 </div>
                                 <div className={styles.radarChart}>
-                                    {/* <Radar data={dataRadar} /> */}
+                                    <Radar options={optionsRadar} data={dataRadar} />
+                                </div>
+                                <div className={styles.doughnutChart}>
+                                    <Doughnut options={optionsDoughnut} data={dataDoughnut} />
                                 </div>
                             </div>
 
